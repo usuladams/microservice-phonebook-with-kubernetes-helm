@@ -3,13 +3,13 @@
 webserver_image:
   repository: paulkellerman/phonebookapp-webserver:latest
   tag: webserver
-  replicaCount: 1
+  replicaCount: 3
 
 
 resultserver_image:
   repository: paulkellerman/phonebookapp-resultserver:latest
   tag: resultserver
-  replicaCount: 1
+  replicaCount: 2
 
 mysql_image:
   repository: mysql:5.7
