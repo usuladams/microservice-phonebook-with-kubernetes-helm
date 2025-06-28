@@ -3,12 +3,12 @@ kind: Service
 metadata:
   name: mysql-svc
   labels:
-    app: {{ .Values.db-service.tag }}
+    app: {{ .Values.db_service.tag | default "mysql" }}
 spec:
   selector:
-      app: {{ .Values.db-service.tag }}
-  type: {{ .Values.db-service.type }}
+      app: {{ .Values.db_service.tag | default "mysql" }}
+  type: {{ .Values.db_service.type }}
   ports:
     - name: db
-      port: {{ .Values.db-service.port }}
-      targetPort: {{ .Values.db-service.targetport }}
+      port: {{ .Values.db_service.port }}
+      targetPort: {{ .Values.db_service.targetport }}

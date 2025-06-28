@@ -3,20 +3,20 @@ kind: Deployment
 metadata:
   name: resultserver-deployment
   labels:
-    app: {{ .Values.resultserver-image.tag }}
+    app: {{ .Values.resultserver_image.tag }}
 spec:
-  replicas: {{ .Values.resultserver-image.replicaCount }}
+  replicas: {{ .Values.resultserver_image.replicaCount }}
   selector:
     matchLabels:
-      app: {{ .Values.resultserver-image.tag }}
+      app: {{ .Values.resultserver_image.tag }}
   template:
     metadata:
       labels:
-        app: {{ .Values.resultserver-image.tag }}
+        app: {{ .Values.resultserver_image.tag }}
     spec:
       containers:
-      - name: {{ .Values.resultserver-image.tag }}
-        image: {{ .Values.resultserver-image.repository }}
+      - name: {{ .Values.resultserver_image.tag }}
+        image: {{ .Values.resultserver_image.repository }}
         ports:
         - containerPort: 80
         envFrom:

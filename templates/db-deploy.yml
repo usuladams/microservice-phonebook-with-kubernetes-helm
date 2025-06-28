@@ -3,22 +3,22 @@ kind: Deployment
 metadata:
   name: mysql-deployment
   labels:
-    app: {{ .Values.mysql-image.tag }}
+    app: {{ .Values.mysql_image.tag }}
 spec:
-  replicas: {{ .Values.mysql-image.replicaCount }}
+  replicas: {{ .Values.mysql_image.replicaCount }}
   selector:
     matchLabels:
-      app: {{ .Values.mysql-image.tag }}
+      app: {{ .Values.mysql_image.tag }}
   template:
     metadata:
       labels:
-        app: {{ .Values.mysql-image.tag }}
+        app: {{ .Values.mysql_image.tag }}
     spec:
       containers:
-      - image: {{ .Values.mysql-image.repository }}
-        name: {{ .Values.mysql-image.tag }}
+      - image: {{ .Values.mysql_image.repository }}
+        name: {{ .Values.mysql_image.tag }}
         ports:
-        - containerPort: {{ .Values.mysql-image.containerPort }}
+        - containerPort: {{ .Values.mysql_image.containerPort }}
         envFrom:
           - configMapRef:
               name: phonebook-configmap

@@ -1,55 +1,53 @@
 
 # This sets the container image more information can be found here: https://kubernetes.io/docs/concepts/containers/images/
-webserver-image:
+webserver_image:
   repository: paulkellerman/phonebookapp-webserver:latest
-  tag: "webserver"
+  tag: webserver
   replicaCount: 1
 
 
-resultserver-image:
+resultserver_image:
   repository: paulkellerman/phonebookapp-resultserver:latest
-  tag: "resultserver"
+  tag: resultserver
   replicaCount: 1
 
-mysql-image:
+mysql_image:
   repository: mysql:5.7
-  tag: "mysql"
+  tag: mysql
   containerPort: 3306
   replicaCount: 1
 
-webserver-service:
+webserver_service:
   type: NodePort
   port: 80
   targetport: 80
-  nodePort: 30001
-  tag: "webserver"
+  nodePort: 30005
+  tag: webserver
 
-resultserver-service:
+resultserver_service:
   type: NodePort
   port: 80
   targetport: 80
-  nodePort: 30002
-  tag: "webserver"
+  nodePort: 30006
+  tag: resultserver
 
-db-service:
+db_service:
   type: ClusterIP
   port: 3306
   targetport: 3306
-  tag: "mysql"
+  tag: mysql
 
 volumes:
-  - name: mysql-storage
+  - name: mysql-storage2
     persistentVolumeClaim:
       claimName: mysql-pv-claim
 
 volumeMounts: 
-  - name: mysql-storage
+  - name: mysql-storage2
     mountPath: "/var/lib/mysql"
 
 storage:
   size: 5Gi
-  path: "/home/data"
+  path: "/home/data2"
   storageClassName: manual
   accessMode: ReadWriteOnce
-  volumeName: mysql-pv
-  claimName: mysql-pv-claim

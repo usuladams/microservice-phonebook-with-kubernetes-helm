@@ -3,7 +3,7 @@ kind: PersistentVolumeClaim
 metadata:
   name: mysql-pv-claim
   labels:
-    app: {{ .Values.db-service.tag}}
+    app: {{ .Values.db_service.tag}}
 spec:
   storageClassName: {{ .Values.storage.storageClassName }}
   accessModes:

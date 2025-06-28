@@ -3,14 +3,14 @@ kind: Service
 metadata:
   name: webserver-svc
   labels:
-    app: {{ .Values.webserver-service.tag }}
+    app: {{ .Values.webserver_service.tag }}
 spec:
   selector:
-    app: {{ .Values.webserver-service.tag }}
-  type: {{ .Values.webserver-service.type }}
+    app: {{ .Values.webserver_service.tag }}
+  type: {{ .Values.webserver_service.type }}
   ports:
-   - name: http
-     port: {{ .Values.webserver-service.port }}
-     targetPort: {{ .Values.webserver-service.targetport }}
-     nodePort: {{ .Values.webserver-service.nodePort }}
-     protocol: TCP
+    - name: http
+      port: {{ .Values.webserver_service.port }}
+      targetPort: {{ .Values.webserver_service.targetport }}
+      nodePort: {{ .Values.webserver_service.nodePort }}
+      protocol: TCP

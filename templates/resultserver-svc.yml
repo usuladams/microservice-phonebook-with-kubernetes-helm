@@ -3,14 +3,14 @@ kind: Service
 metadata:
   name: resultserver-svc
   labels:
-    app: {{ .Values.resultserver-service.tag }}
+    app: {{ .Values.resultserver_service.tag }}
 spec:
   selector:
-    app: {{ .Values.resultserver-service.tag }}
-  type: {{ .Values.resultserver-service.type }}
+    app: {{ .Values.resultserver_service.tag }}
+  type: {{ .Values.resultserver_service.type }}
   ports:
    - name: http
-     port: {{ .Values.resultserver-service.port }}
-     targetPort: {{ .Values.resultserver-service.targetport }}
-     nodePort: {{ .Values.resultserver-service.nodePort }}
+     port: {{ .Values.resultserver_service.port }}
+     targetPort: {{ .Values.resultserver_service.targetport }}
+     nodePort: {{ .Values.resultserver_service.nodePort }}
      protocol: TCP
