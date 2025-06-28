@@ -1,7 +1,7 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: phonebook-ingress-5
+  name: phonebook-ingress
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
@@ -9,14 +9,14 @@ spec:
   rules:
     - http:
         paths:
-          - path: /web
+          - path: /
             pathType: Prefix
             backend:
               service:
                 name: webserver-svc
                 port: 
                   number: 80
-          - path: /results
+          - path: /result
             pathType: Prefix
             backend:
               service: 

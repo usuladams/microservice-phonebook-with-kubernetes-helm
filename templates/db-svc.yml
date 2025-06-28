@@ -3,10 +3,10 @@ kind: Service
 metadata:
   name: mysql-svc
   labels:
-    app: {{ .Values.db_service.tag | default "mysql" }}
+    app: {{ .Values.db_service.tag }}
 spec:
   selector:
-      app: {{ .Values.db_service.tag | default "mysql" }}
+      app: {{ .Values.db_service.tag }}
   type: {{ .Values.db_service.type }}
   ports:
     - name: db
