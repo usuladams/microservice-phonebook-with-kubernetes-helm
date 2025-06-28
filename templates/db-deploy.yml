@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mysql-deployment
+  labels:
+    app: {{ .Values.mysql-image.tag }}
+spec:
+  replicas: {{ .Values.mysql-image.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ .Values.mysql-image.tag }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.mysql-image.tag }}
+    spec:
+      containers:
+      - image: {{ .Values.mysql-image.repository }}
+        name: {{ .Values.mysql-image.tag }}
+        ports:
+        - containerPort: {{ .Values.mysql-image.containerPort }}
+        envFrom:
+          - configMapRef:
+              name: phonebook-configmap
+          - secretRef:
+              name: phonebook-secret
+        volumeMounts: {{- toYaml .Values.volumeMounts | nindent 12 }}
+          # - name: mysql-storage
+          #   mountPath: /var/lib/mysql
+      volumes:  {{- toYaml .Values.volumes | nindent 8 }}
+        # - name: mysql-storage
+        #   persistentVolumeClaim:
+        #     claimName: mysql-pv-claim

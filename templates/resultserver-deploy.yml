@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: resultserver-deployment
+  labels:
+    app: {{ .Values.resultserver-image.tag }}
+spec:
+  replicas: {{ .Values.resultserver-image.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ .Values.resultserver-image.tag }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.resultserver-image.tag }}
+    spec:
+      containers:
+      - name: {{ .Values.resultserver-image.tag }}
+        image: {{ .Values.resultserver-image.repository }}
+        ports:
+        - containerPort: 80
+        envFrom:
+        - configMapRef:
+            name: phonebook-configmap
+        - secretRef:
+            name: phonebook-secret
